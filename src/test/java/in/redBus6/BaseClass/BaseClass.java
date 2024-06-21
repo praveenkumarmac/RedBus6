@@ -29,7 +29,7 @@ public class BaseClass implements IBaseClass{
 	public static Select select;
 
 	@Override
-	public void browserLaunch(String url) {
+	public void browserLaunch() {
 		WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("disable-notifications");
@@ -39,8 +39,12 @@ public class BaseClass implements IBaseClass{
 //		driver.get(url);
 		action=new Actions(driver);
 	}
-	public void get(String url) {
-		driver.get(url);	
+//	public void get(String url) {
+//		driver.get(url);	
+//	}
+	
+	public void launchApplication(String url) {
+		driver.get(url);
 	}
 	@Override
 	public void browserClose() {
@@ -219,6 +223,12 @@ public class BaseClass implements IBaseClass{
 		WebDriverWait Wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		return Wait;
 	}
+
+//	@Override
+//	public void get(String url) {
+//		// TODO Auto-generated method stub
+//		
+//	}
 	
 
 }

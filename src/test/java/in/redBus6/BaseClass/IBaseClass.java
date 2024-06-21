@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public interface IBaseClass {
 	
-	void browserLaunch (String url);
+	void browserLaunch ();
 	void browserClose ();
 	void inputKeys (WebElement ele, String value);
 	void button (WebElement ele);
@@ -37,6 +37,7 @@ public interface IBaseClass {
 	String pageUrl();
 	String pageSource();
 	WebDriverWait waits();
-	void get(String url);
+	//void get(String url);
+	void launchApplication(String url);
 
 }

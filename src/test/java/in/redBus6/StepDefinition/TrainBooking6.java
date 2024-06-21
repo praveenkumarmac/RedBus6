@@ -25,8 +25,8 @@ public class TrainBooking6 extends BaseClass {
 
 	@Given("Launch the browser and appilication1 {string}")
 	public void launch_the_browser_and_appilication1(String url) {
-		base.browserLaunch(url);
-		base.get(url);
+		base.launchApplication(url);
+		//base.get(url);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(120));
 	}
 	@When("User clicks on rail")

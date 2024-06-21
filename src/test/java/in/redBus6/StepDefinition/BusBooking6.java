@@ -1,7 +1,12 @@
 package in.redBus6.StepDefinition;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
+import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -26,9 +31,20 @@ public class BusBooking6 extends BaseClass {
 	public static WebDriverWait wait;
 	
 	@Given("Launch the browser and appilication {string}")
-	public void launch_the_browser_and_appilication(String url) {
-		base.browserLaunch(url);
-		base.get(url);
+	public void launch_the_browser_and_appilication(String url) throws IOException {
+		File f = new File("C:\\Users\\PRAVEEN\\eclipse-workspace-latest\\RedBus6\\src\\test\\resources\\Utilities.property");
+		FileInputStream fi = new FileInputStream(f);
+		Properties prop = new Properties();
+		prop.load(fi);
+		String file = prop.getProperty("file");
+		String url1 = prop.getProperty("url");
+		
+		FileOutputStream fo = new FileOutputStream(f);
+		prop.setProperty("url", "https:www.redbus.in");
+		prop.save(fo, "Updated URL");
+		System.out.println(file+" and "+url1);
+		base.launchApplication(url1);
+		//base.get(url);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(240));
 	}
 	@When("User enters the value in from place {string}")
@@ -49,7 +65,7 @@ public class BusBooking6 extends BaseClass {
 	}
 	@When("User selects a data  in the Date DropDown")
 	public void user_selects_a_data_in_the_Date_DropDown() {
-		WebElement date = driver.findElement(By.xpath("//span[text()='21' and contains(@class,'dkWAbH')]"));
+		WebElement date = driver.findElement(By.xpath("//span[text()='24' and contains(@class,'dkWAbH')]"));
 		base.button(date);		
 	}
 	@When("User clicks on search button")
